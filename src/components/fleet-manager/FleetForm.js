@@ -4,10 +4,6 @@ import FleetSpecifics from './FleetSpecifics';
 import { createFleetDatabase } from '../../utilis/Firebase';
 
 
-
-
-
-
   const FleetForm = () => {
     const [customerFleet, setCustomerFleet] = useState([]);
     const [inputValue, setInputValue] = useState('');
@@ -122,7 +118,7 @@ import { createFleetDatabase } from '../../utilis/Firebase';
                 
                   {unit.TaskSpecifics.map((details, subIndex) => (
                     <li key={subIndex}>
-                      <strong>Position:</strong> {details.position}, <strong>Specifics:</strong> {details.specifics}, <strong>Tread Depth:</strong> {details.treadDepth}
+                      <strong>Position:</strong> {details.position}, <strong>Specifics:</strong> {details.specifics}, <strong>Tread Depth:</strong> {details.treadDepth}/32
                     </li>
                   ))}
                 </ul>

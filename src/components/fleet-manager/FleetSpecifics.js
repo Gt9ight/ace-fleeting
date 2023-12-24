@@ -52,7 +52,7 @@ const FleetSpecifics = ({ onClose, onSave }) => {
         placeholder="Tread Depth"
       />
 
-      <button onClick={handleSaveSpecifics}>Add Subtasks</button>
+      <button onClick={handleSaveSpecifics}>Add Position</button>
       <button onClick={onClose}>Close</button>
       </div>
   );

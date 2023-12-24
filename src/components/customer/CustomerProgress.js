@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../utilis/Firebase';
 import { getDocs, collection, updateDoc, doc } from 'firebase/firestore';
-import './fleetList.css'
-const FleetList = () => {
+import './customerprogress.css'
+
+const Customerprogress = () => {
   const [FleetsFromFirestore, setFleetsFromFirestore] = useState([]);
-  const [showCustomerCategory, setShowCustomerForCategory] = useState(null);
+  const [showCustomerCategory, setShowCustomerForCategory] =useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,6 @@ const FleetList = () => {
 
     fetchData();
   }, []);
-
 
   // Function to handle marking a todo as done
   const handleDone = async (UnitId, isDone) => {
@@ -49,8 +49,6 @@ const FleetList = () => {
     }
     ByCustomer[unit.customer].push(unit);
   });
-
-
 
   // Calculate progress for each category
   const getCustomerProgress = (cust) => {
@@ -86,7 +84,7 @@ const FleetList = () => {
               onClick={() => toggleCustomerForCategory(Fleetcustomer)}
               className={`category-header ${showCustomerCategory === Fleetcustomer ? 'active' : ''}`}
             >
-               <h3>{Fleetcustomer} - {getCustomerCompletedCount(Fleetcustomer)}/{getCustomerFleetCount(Fleetcustomer)}Units</h3>
+              <h3>{Fleetcustomer} - {getCustomerCompletedCount(Fleetcustomer)}/{getCustomerFleetCount(Fleetcustomer)} Units</h3>
               <div className="progress-bar">
                 <div
                   className="progress-bar-fill"
@@ -99,11 +97,6 @@ const FleetList = () => {
               <ul className="fleet-list">
                 {ByCustomer[Fleetcustomer].map((unit) => (
                   <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''}`}>
-                    <input
-                      type="checkbox"
-                      checked={unit.done || false}
-                      onChange={(e) => handleDone(unit.id, e.target.checked)}
-                    />
                     <strong>Unit Number:</strong> {unit.text}
                     {/* Render other properties here */}
                     <ul>
@@ -127,4 +120,4 @@ const FleetList = () => {
   );
 };
 
-export default FleetList;
+export default Customerprogress;

@@ -1,6 +1,13 @@
 /* CSS for TodoList component */
 
 /* Overall container styles */
+body{
+  
+  color: black;
+}
+.fleetList-title{
+  text-align: center;
+}
 .centered-container {
     display: flex;
     flex-direction: column;

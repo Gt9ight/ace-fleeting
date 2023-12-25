@@ -1,6 +1,7 @@
 // SubtaskForm.js
 
 import React, { useState } from 'react';
+import './fleetspecifics.css'
 
 const FleetSpecifics = ({ onClose, onSave }) => {
   const [position, setPosition] = useState('');

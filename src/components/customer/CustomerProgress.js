@@ -97,7 +97,7 @@ const Customerprogress = () => {
               <ul className="fleet-list">
                 {ByCustomer[Fleetcustomer].map((unit) => (
                   <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''}`}>
-                    <strong>Unit Number:</strong> {unit.text}
+                    <strong>Unit Number:</strong> {unit.UnitNumber}
                     {/* Render other properties here */}
                     <ul>
                       {unit.TaskSpecifics &&

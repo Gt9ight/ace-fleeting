@@ -104,7 +104,7 @@ const FleetList = () => {
                       checked={unit.done || false}
                       onChange={(e) => handleDone(unit.id, e.target.checked)}
                     />
-                    <strong>Unit Number:</strong> {unit.text}
+                    <strong>Unit Number:</strong> {unit.UnitNumber}
                     {/* Render other properties here */}
                     <ul>
                       {unit.TaskSpecifics &&

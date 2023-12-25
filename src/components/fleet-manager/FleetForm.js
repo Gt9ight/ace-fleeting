@@ -20,7 +20,7 @@ import { createFleetDatabase } from '../../utilis/Firebase';
 
   const handleAddingUnitNumber = () => {
     if (inputValue.trim() !== '') {
-      setCustomerFleet([...customerFleet, { text: inputValue, customer: selectedCustomer, TaskSpecifics: [] }]);
+      setCustomerFleet([...customerFleet, { UnitNumber: inputValue, customer: selectedCustomer, TaskSpecifics: [] }]);
       setInputValue('');
     }
   };
@@ -105,7 +105,7 @@ import { createFleetDatabase } from '../../utilis/Firebase';
           if (selectedCustomer === 'All' || unit.customer === selectedCustomer) {
             return (
               <li key={index} className='unit-card'>
-                <strong>Unit Number:</strong>{unit.text}
+                <strong>Unit Number:</strong>{unit.UnitNumber}
                 <button
                   onClick={() => {
                     setCurrentUnitIndex(index);

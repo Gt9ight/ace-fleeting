@@ -1,6 +1,4 @@
-/* CSS for TodoList component */
 
-/* Overall container styles */
 body{
   
   color: black;
@@ -13,7 +11,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Adjust this based on your layout */
+    height: 100vh;
   }
 
 .todo-container {
@@ -23,13 +21,13 @@ body{
     font-family: Arial, sans-serif;
   }
   
-  /* Heading styles */
+  
   .todo-container h2 {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  /* Category buttons container */
+ 
   .category-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -37,7 +35,7 @@ body{
     margin-bottom: 20px;
   }
   
-  /* Category button styles */
+ 
   .category-button {
     padding: 8px 12px;
     border: none;
@@ -52,7 +50,7 @@ body{
     color: white;
   }
   
-  /* Progress bar container */
+  
   .progress-bar {
     width: 100%;
     background-color: #ddd;
@@ -60,7 +58,7 @@ body{
     margin-bottom: 20px;
   }
   
-  /* Progress bar fill */
+ 
   .progress-bar-fill {
     height: 20px;
     background-color: #00b894;
@@ -68,7 +66,7 @@ body{
     transition: width 0.3s ease;
   }
   
-  /* Todo list styles */
+ 
   .fleet-list {
     list-style: none;
     padding: 0;
@@ -91,7 +89,7 @@ body{
     margin-right: 10px;
   }
   
-  /* Subtasks styles */
+  
   .subtask-list {
     list-style: none;
     padding: 0;

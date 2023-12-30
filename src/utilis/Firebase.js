@@ -14,7 +14,7 @@ const firebaseConfig = {
     appId: "1:205403427962:web:a1412b008668298fcb97c3"
   };
   
-  // Initialize Firebase
+
   const app = initializeApp(firebaseConfig);
   export const db = getFirestore();
 
@@ -30,7 +30,7 @@ const firebaseConfig = {
       const batch = writeBatch(db);
   
       objectsToAdd.forEach((object) => {
-        const newDocRef = doc(TaskCollectionRef); // Creating a new document reference
+        const newDocRef = doc(TaskCollectionRef); 
         batch.set(newDocRef, object);
       });
   

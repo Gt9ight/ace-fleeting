@@ -1,19 +1,17 @@
-/* fleetForm.css */
 
-/* Basic styling for the header */
 h1 {
     text-align: center;
     font-size: 2rem;
   }
   
-  /* Styling for the customer section */
+ 
   .customers {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
   }
   
-  /* Styling for customer buttons */
+  
   .customers button {
     margin: 5px;
     padding: 5px 10px;
@@ -22,20 +20,20 @@ h1 {
     cursor: pointer;
   }
   
-  /* Active customer button style */
+  
   .customers button.active {
     background-color: #2196F3;
     color: white;
   }
   
-  /* Styling for the input section */
+  
   .input-section {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
   }
   
-  /* Styling for unit input */
+
   .unit-input {
     padding: 8px;
     margin-right: 10px;
@@ -44,7 +42,7 @@ h1 {
     width: 200px;
   }
   
-  /* Styling for add button */
+
   .add-button {
     padding: 8px 15px;
     background-color: #4CAF50;
@@ -54,13 +52,13 @@ h1 {
     cursor: pointer;
   }
   
-  /* Styling for unit list */
+ 
   .unit-list {
     list-style: none;
     padding: 0;
   }
   
-  /* Styling for unit card */
+  
   .unit-card {
     margin-bottom: 10px;
     padding: 10px;
@@ -68,14 +66,13 @@ h1 {
     border-radius: 4px;
   }
   
-  /* Styling for specific details */
   .unit-card ul {
     list-style: none;
     padding: 0;
     margin-top: 10px;
   }
   
-  /* Styling for buttons within the unit card */
+ 
   .unit-card button {
     margin-top: 5px;
     padding: 5px 10px;
@@ -86,7 +83,7 @@ h1 {
     cursor: pointer;
   }
   
-  /* Styling for the overlay */
+  
   .overlay {
     position: fixed;
     top: 0;
@@ -97,7 +94,7 @@ h1 {
     z-index: 1;
   }
   
-  /* Styling for the specifics popup */
+ 
   .specifics-popup {
     position: fixed;
     top: 50%;
@@ -110,7 +107,7 @@ h1 {
     z-index: 2;
   }
   
-  /* Styling for submit button */
+  
   .submit-button {
     display: block;
     margin: 20px auto;

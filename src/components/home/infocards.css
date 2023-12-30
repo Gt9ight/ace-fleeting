@@ -1,13 +1,13 @@
 body {
     color: white;
-    font-size: 14px; /* Smaller font size */
+    font-size: 14px; 
 }
 
 .cardsContainer {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to the next line on small screens */
-    padding: 1rem; /* Reduce padding for smaller screens */
-    justify-content: center; /* Center align cards on smaller screens */
+    flex-wrap: wrap; 
+    padding: 1rem; 
+    justify-content: center; 
 }
 
 .card {
@@ -16,8 +16,8 @@ body {
     flex-direction: column;
     transform: rotateY(55deg);
     height: 300px;
-    width: calc(50% - 2rem); /* Use 50% width for small screens */
-    max-width: 250px; /* Limit maximum width for larger screens */
+    width: calc(50% - 2rem); 
+    max-width: 250px; 
     padding: 1rem;
     border-radius: 16px;
     box-shadow: -1rem 0 3rem black;
@@ -64,7 +64,7 @@ body {
 }
 
 .card .card-content {
-    flex: 1; /* Expand content to fill the card height */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,20 +74,20 @@ body {
     font-size: 14px;
 }
 
-/* When hovering over the card, reveal the card content */
+
 .card:hover .card-content {
     opacity: 1;
 }
 
-/* Media query for screens smaller than 768px (adjust the breakpoint as needed) */
+
 @media screen and (max-width: 768px) {
     .cardsContainer {
         padding: 1rem;
     }
 
     .card {
-        width: 100%; /* Full width for small screens */
-        max-width: none; /* Remove max-width for small screens */
-        margin: 1rem 0; /* Adjust margin for small screens */
+        width: 100%; 
+        max-width: none; 
+        margin: 1rem 0; 
     }
 }

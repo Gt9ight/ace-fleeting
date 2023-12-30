@@ -1,4 +1,4 @@
-// SubtaskForm.js
+
 
 import React, { useState } from 'react';
 import './fleetspecifics.css'
@@ -21,7 +21,7 @@ const FleetSpecifics = ({ onClose, onSave }) => {
   };
 
   const handleSaveSpecifics = () => {
-    onSave({ position, specifics, treadDepth }); // Save all subtasks at once as an object
+    onSave({ position, specifics, treadDepth }); 
     setPosition('');
     setSpecifics('');
     setTreadDepth('');

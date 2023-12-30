@@ -24,14 +24,14 @@ const FleetList = () => {
   }, []);
 
 
-  // Function to handle marking a todo as done
+  
   const handleDone = async (UnitId, isDone) => {
     try {
       const todoRef = doc(db, 'fleets', UnitId);
       await updateDoc(todoRef, {
         done: isDone,
       });
-      // Refresh the todos list after update
+     
       const updatedTask = FleetsFromFirestore.map((unit) =>
         unit.id === UnitId ? { ...unit, done: isDone } : unit
       );
@@ -41,7 +41,7 @@ const FleetList = () => {
     }
   };
 
-  // Organize todos by category
+ 
   const ByCustomer = {};
   FleetsFromFirestore.forEach((unit) => {
     if (!ByCustomer[unit.customer]) {
@@ -52,7 +52,7 @@ const FleetList = () => {
 
 
 
-  // Calculate progress for each category
+ 
   const getCustomerProgress = (cust) => {
     const totalTodos = ByCustomer[cust]?.length || 0;
     const completedTodos = ByCustomer[cust]?.filter((unit) => unit.done).length || 0;
@@ -105,7 +105,7 @@ const FleetList = () => {
                       onChange={(e) => handleDone(unit.id, e.target.checked)}
                     />
                     <strong>Unit Number:</strong> {unit.UnitNumber}
-                    {/* Render other properties here */}
+                   
                     <ul>
                       {unit.TaskSpecifics &&
                         unit.TaskSpecifics.length > 0 &&

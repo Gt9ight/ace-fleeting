@@ -24,14 +24,14 @@ const Customerprogress = () => {
     fetchData();
   }, []);
 
-  // Function to handle marking a todo as done
+  
   const handleDone = async (UnitId, isDone) => {
     try {
       const todoRef = doc(db, 'fleets', UnitId);
       await updateDoc(todoRef, {
         done: isDone,
       });
-      // Refresh the todos list after update
+      
       const updatedTask = FleetsFromFirestore.map((unit) =>
         unit.id === UnitId ? { ...unit, done: isDone } : unit
       );
@@ -41,7 +41,7 @@ const Customerprogress = () => {
     }
   };
 
-  // Organize todos by category
+  
   const ByCustomer = {};
   FleetsFromFirestore.forEach((unit) => {
     if (!ByCustomer[unit.customer]) {
@@ -50,7 +50,7 @@ const Customerprogress = () => {
     ByCustomer[unit.customer].push(unit);
   });
 
-  // Calculate progress for each category
+  
   const getCustomerProgress = (cust) => {
     const totalTodos = ByCustomer[cust]?.length || 0;
     const completedTodos = ByCustomer[cust]?.filter((unit) => unit.done).length || 0;
@@ -77,6 +77,18 @@ const Customerprogress = () => {
   return (
     <div>
       <h2 className='fleetList-title'>Fleets</h2>
+      <div class="color-key">
+  <div class="color-square green"></div>
+  <p>= Completed</p>
+  <div class="color-square red"></div>
+  <p>= Urgent</p>
+  <div class="color-square yellow"></div>
+  <p>= Medium</p>
+  <div class="color-square blue"></div>
+  <p>=Low</p>
+</div>
+
+
       <div className="category-cards">
         {Object.keys(ByCustomer).map((Fleetcustomer) => (
           <div key={Fleetcustomer} className="category-card">
@@ -98,7 +110,6 @@ const Customerprogress = () => {
                 {ByCustomer[Fleetcustomer].map((unit) => (
                   <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''}`}>
                     <strong>Unit Number:</strong> {unit.UnitNumber}
-                    {/* Render other properties here */}
                     <ul>
                       {unit.TaskSpecifics &&
                         unit.TaskSpecifics.length > 0 &&

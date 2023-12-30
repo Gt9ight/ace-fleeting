@@ -21,7 +21,7 @@ const Home = () => {
                 <Link className="technicianbutton" to='/technicianfleets'>Technician</Link>
             </div>
             <div className="technician">
-                <Link className="technicianbutton" to='/sign-in'>sing in</Link>
+                <Link className="technicianbutton" to='/Authentication'>sign in</Link>
             </div>
         </div>
     )

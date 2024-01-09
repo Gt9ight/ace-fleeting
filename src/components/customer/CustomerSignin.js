@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utilis/Firebase";
 import { useNavigate, Link } from "react-router-dom";
-import './signin.scss'
+import './customersignin.scss'
 
 
 
@@ -10,7 +10,7 @@ const defaultFormFields = {
     password:''
 }
 
-const SignInForm = () => {
+const CustomerSignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
     const navigate = useNavigate()
@@ -25,12 +25,12 @@ const SignInForm = () => {
     const signInWithGoogle = async() => {
         const {user} = await signInWithGooglePopup();
         await createUserDocumentFromAuth(user)
-        navigate('/fleetform')
+        navigate('/customer')
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/fleetform')
+        navigate('/customer')
 
 
     try {
@@ -59,7 +59,7 @@ const SignInForm = () => {
         <div className='signinform-container'>
             <div className='form-wrapper'>
                 <span className='logo'>Ace Fleeting</span>
-                <span className='title'>Login</span>
+                <span className='title'>Customer Login</span>
                 <form onSubmit={handleSubmit}>
                     <input type='email' required onChange={handleChange} name="email" value={email} placeholder='email'/>
                     <input type='password' required onChange={handleChange} name="password" value={password} placeholder='password'/>
@@ -72,4 +72,4 @@ const SignInForm = () => {
       )
     }
 
-export default SignInForm
+export default CustomerSignInForm

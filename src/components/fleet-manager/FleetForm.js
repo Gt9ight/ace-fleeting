@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './fleetForm.css'
 import FleetSpecifics from './FleetSpecifics';
 import { createFleetDatabase } from '../../utilis/Firebase';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../utilis/Firebase';
+import { AuthContext } from '../context/AuthContext';
+
 
 
   const FleetForm = () => {
@@ -12,6 +16,8 @@ import { createFleetDatabase } from '../../utilis/Firebase';
     const [customers, setCustomers] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [currentUnitIndex, setCurrentUnitIndex] = useState(null);
+
+    const {currentUser} = useContext(AuthContext)
   
 
   const handleInputChange = (e) => {
@@ -68,7 +74,12 @@ import { createFleetDatabase } from '../../utilis/Firebase';
 
   return (
     <div> 
+      <div className='current-user'>
+        <p className='username'>Welcome, {currentUser.displayName}</p>        
+        <button onClick={()=>signOut(auth)} className='logout'>Log Out</button>
+      </div>
       <h1>Ace Fleeting</h1>
+      
       <div className="customers">
       {customers.map((customerName) => (
         <button
@@ -141,7 +152,7 @@ import { createFleetDatabase } from '../../utilis/Firebase';
           </div>
         </>
       )}
-      <button onClick={submitFleet}>submit</button>
+      <button className='submission-button' onClick={submitFleet}>submit</button>
 
 
     </div>

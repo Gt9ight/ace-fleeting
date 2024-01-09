@@ -1,4 +1,6 @@
 
+
+
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -20,6 +22,10 @@ h1 {
     cursor: pointer;
   }
   
+  .username{
+    font-size: 15px;
+    font-weight: bold;
+  }
   
   .customers button.active {
     background-color: #2196F3;
@@ -56,14 +62,23 @@ h1 {
   .unit-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px;
+    margin-top: 20px; 
   }
   
   
   .unit-card {
-    margin-bottom: 10px;
-    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 400px; 
+    width: 100%;
   }
   
   .unit-card ul {
@@ -118,4 +133,44 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .current-user {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
   
+  .logout {
+    border: solid 1px;
+    border-radius: 5px;
+    background-color: rgb(103, 155, 103);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    height: 40px;
+    padding: 0 15px;
+  }
+  
+  @media screen and (max-width: 768px) {
+  .current-user {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logout {
+    margin-top: 10px; 
+    width: 100%; 
+  }
+}
+
+.submission-button {
+  display: block;
+  margin: 0 auto; 
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

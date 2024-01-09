@@ -7,7 +7,7 @@ const InfoCards = () =>{
                 <h1>Manage</h1>
                 <div className='card-content'>
                     <p>                    
-                    Our app empowers fleet managers with data analytics and real-time tracking, enhancing maintenance, compliance, and overall efficiency. With its user-friendly interface, it simplifies fleet management, leading to increased productivity and reduced costs. A vital tool for modern logistics, it elevates decision-making and asset coordination, revolutionizing semi-truck fleet management.
+                    Our app empowers fleet managers with data analytics and real-time tracking, enhancing maintenance, compliance, and overall efficiency. With its user-friendly interface, it simplifies fleet management, leading to increased productivity and reduced costs. A vital tool for modern logistics, it elevates decision-making and asset coordination, revolutionizing fleet management.
                     </p>
                     </div>
             </div>

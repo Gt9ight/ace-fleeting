@@ -12,16 +12,13 @@ const Home = () => {
             <h1 className="title">WELCOME TO YOUR FLEET MANGER</h1>
                 <InfoCards />
             <div className="fleet-checker">
-                <Link className="fleet-checkerbutton" to='/fleetform' >Fleet Checker</Link>
+                <Link className="fleet-checkerbutton" to='/fleetmanagersignin' >Fleet Checker</Link>
             </div>
             <div className="fleet-customer">
-                <Link className="fleet-checkerbutton" to='/customerfleets' >Customer</Link>
+                <Link className="fleet-checkerbutton" to='/customersignin' >Customer</Link>
             </div>
             <div className="technician">
-                <Link className="technicianbutton" to='/technicianfleets'>Technician</Link>
-            </div>
-            <div className="technician">
-                <Link className="technicianbutton" to='/Authentication'>sign in</Link>
+                <Link className="technicianbutton" to='/techniciansignin'>Technician</Link>
             </div>
         </div>
     )

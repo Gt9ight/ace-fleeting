@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../../utilis/Firebase';
+import React, { useEffect, useState, useContext } from 'react';
+import { db, auth } from '../../utilis/Firebase';
 import { getDocs, collection, updateDoc, doc } from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+import { AuthContext } from '../context/AuthContext';
 import './fleetList.css'
 const FleetList = () => {
   const [FleetsFromFirestore, setFleetsFromFirestore] = useState([]);
   const [showCustomerCategory, setShowCustomerForCategory] = useState(null);
+
+  const {currentUser} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,6 +82,10 @@ const FleetList = () => {
 
   return (
     <div>
+      <div className='current-user'>
+        <p className='username'>Welcome, {currentUser.displayName}</p>        
+        <button onClick={()=>signOut(auth)} className='logout'>Log Out</button>
+      </div>
       <h2 className='fleetList-title'>Fleets</h2>
       <div className="category-cards">
         {Object.keys(ByCustomer).map((Fleetcustomer) => (

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utilis/Firebase";
 import { useNavigate, Link } from "react-router-dom";
-import './signin.scss'
+import './fleetman.scss'
 
 
 
@@ -10,7 +10,7 @@ const defaultFormFields = {
     password:''
 }
 
-const SignInForm = () => {
+const FleetmanagerSignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
     const navigate = useNavigate()
@@ -59,7 +59,7 @@ const SignInForm = () => {
         <div className='signinform-container'>
             <div className='form-wrapper'>
                 <span className='logo'>Ace Fleeting</span>
-                <span className='title'>Login</span>
+                <span className='title'>Fleet Manager Login</span>
                 <form onSubmit={handleSubmit}>
                     <input type='email' required onChange={handleChange} name="email" value={email} placeholder='email'/>
                     <input type='password' required onChange={handleChange} name="password" value={password} placeholder='password'/>
@@ -72,4 +72,4 @@ const SignInForm = () => {
       )
     }
 
-export default SignInForm
+export default FleetmanagerSignInForm

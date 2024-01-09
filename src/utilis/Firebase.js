@@ -1,7 +1,7 @@
 
 import { initializeApp } from 'firebase/app';
 import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
-
+import {getStorage} from 'firebase/storage'
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs} from 'firebase/firestore'
 
 
@@ -17,6 +17,7 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
   export const db = getFirestore();
+  export const storage = getStorage()
 
 
 
@@ -69,6 +70,7 @@ const firebaseConfig = {
           createdAt,
           ...additionalInformation
         });
+
       }catch(error){
         console.log('error creating user', error.message)
     }}

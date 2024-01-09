@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../../utilis/Firebase';
+import React, { useEffect, useState, useContext } from 'react';
+import { db, auth } from '../../utilis/Firebase';
 import { getDocs, collection, updateDoc, doc } from 'firebase/firestore';
+import { AuthContext } from '../context/AuthContext';
+import { signOut } from 'firebase/auth';
 import './customerprogress.css'
 
 const Customerprogress = () => {
   const [FleetsFromFirestore, setFleetsFromFirestore] = useState([]);
   const [showCustomerCategory, setShowCustomerForCategory] =useState(null);
+  const {currentUser} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,18 +79,11 @@ const Customerprogress = () => {
 
   return (
     <div>
+      <div className='current-user'>
+        <p className='username'>Welcome, {currentUser.displayName}</p>        
+        <button onClick={()=>signOut(auth)} className='logout'>Log Out</button>
+      </div>
       <h2 className='fleetList-title'>Fleets</h2>
-      <div class="color-key">
-  <div class="color-square green"></div>
-  <p>= Completed</p>
-  <div class="color-square red"></div>
-  <p>= Urgent</p>
-  <div class="color-square yellow"></div>
-  <p>= Medium</p>
-  <div class="color-square blue"></div>
-  <p>=Low</p>
-</div>
-
 
       <div className="category-cards">
         {Object.keys(ByCustomer).map((Fleetcustomer) => (

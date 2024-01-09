@@ -11,7 +11,7 @@ const defaultFormFields = {
     confirmPassword:''
 }
 
-const SignupForm = () => {
+const TechSignupForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword} = formFields;
 
@@ -66,4 +66,4 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default TechSignupForm

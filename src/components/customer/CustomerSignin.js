@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utilis/Firebase";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuthForCustomers } from "../../utilis/Firebase";
 import { useNavigate, Link } from "react-router-dom";
-import './customersignin.scss'
+import '../signin/signin.scss'
 
 
 
@@ -24,7 +24,7 @@ const CustomerSignInForm = () => {
 
     const signInWithGoogle = async() => {
         const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
+        await createUserDocumentFromAuthForCustomers(user)
         navigate('/customer')
     }
 
@@ -66,7 +66,7 @@ const CustomerSignInForm = () => {
                     <button>Sign in</button>
                     <button onClick={signInWithGoogle}>Sign in with Google</button>
                 </form>
-                <p>You dont have an account? <Link to='/register'>Register</Link></p>
+                <p>You dont have an account? <Link to='/customersignup'>Register</Link></p>
             </div>
         </div>
       )

@@ -1,18 +1,20 @@
 import { useState } from "react"
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuthForTechs} from "../../utilis/Firebase";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuthForFleetManagers} from "../../utilis/Firebase";
+import '../signup/signup.scss'
 import { Link, useNavigate } from "react-router-dom";
 
 
 const defaultFormFields = {
     displayName:'',
+    SalesManNumber:'',
     email:'',
     password:'',
     confirmPassword:''
 }
 
-const TechSignupForm = () => {
+const FleetManagerSignupForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {displayName, email, password, confirmPassword} = formFields;
+    const {displayName, SalesManNumber, email, password, confirmPassword} = formFields;
     const navigate = useNavigate()
 
     console.log(formFields)
@@ -31,9 +33,9 @@ const TechSignupForm = () => {
         try {
             const {user} = await createAuthUserWithEmailAndPassword(email, password);
 
-            await createUserDocumentFromAuthForTechs(user, {displayName});
+            await createUserDocumentFromAuthForFleetManagers(user, {displayName, SalesManNumber});
             resetFormFields();
-            navigate('/fleetlist')
+            navigate('/fleetform')
 
 
         }catch(error) {
@@ -53,18 +55,19 @@ const TechSignupForm = () => {
     <div className='form-container'>
         <div className='form-wrapper'>
             <span className='logo'>Ace Fleeting</span>
-            <span className='title'>Tech Registration</span>
+            <span className='title'>Fleet Manager Regiteration</span>
             <form onSubmit={handleSubmit}>
                 <input type='text' required onChange={handleChange} name="displayName" value={displayName} placeholder='display name'/>
+                <input type='number' required onChange={handleChange} name="SalesManNumber" value={SalesManNumber} placeholder='Salesman Number'/>
                 <input type='email' required onChange={handleChange} name="email" value={email} placeholder='email'/>
                 <input type='password' required onChange={handleChange} name="password" value={password} placeholder='password'/>
                 <input  type='password' required onChange={handleChange} name="confirmPassword" value={confirmPassword} placeholder="Confirm Password"/>
                 <button>Sign up</button>
             </form>
-            <p>You do have an account? <Link to='/techniciansignin '>Login</Link></p>
+            <p>You do have an account? <Link to='/fleetmanagersignin '>Login</Link></p>
         </div>
     </div>
   )
 }
 
-export default TechSignupForm
+export default FleetManagerSignupForm

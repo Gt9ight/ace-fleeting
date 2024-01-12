@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utilis/Firebase";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuthForFleetManagers } from "../../utilis/Firebase";
 import { useNavigate, Link } from "react-router-dom";
-import './fleetman.scss'
 
 
 
@@ -24,7 +23,7 @@ const FleetmanagerSignInForm = () => {
 
     const signInWithGoogle = async() => {
         const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
+        await createUserDocumentFromAuthForFleetManagers(user)
         navigate('/fleetform')
     }
 
@@ -66,7 +65,7 @@ const FleetmanagerSignInForm = () => {
                     <button>Sign in</button>
                     <button onClick={signInWithGoogle}>Sign in with Google</button>
                 </form>
-                <p>You dont have an account? <Link to='/register'>Register</Link></p>
+                <p>You dont have an account? <Link to='/fleetmanagersignup'>Register</Link></p>
             </div>
         </div>
       )

@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utilis/Firebase";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuthForTechs } from "../../utilis/Firebase";
 import { useNavigate, Link } from "react-router-dom";
-import './techsignin.scss'
 
 
 
@@ -24,17 +23,18 @@ const TechSignInForm = () => {
 
     const signInWithGoogle = async() => {
         const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
+        await createUserDocumentFromAuthForTechs(user)
         navigate('/fleetlist')
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/fleetlist')
+        
 
 
     try {
         const response = await signInAuthUserWithEmailAndPassword(email, password)
+        navigate('/fleetlist')
         console.log(response)
     resetFormFields();
     }catch(error) {
@@ -66,7 +66,7 @@ const TechSignInForm = () => {
                     <button>Sign in</button>
                     <button onClick={signInWithGoogle}>Sign in with Google</button>
                 </form>
-                <p>You dont have an account? <Link to='/register'>Register</Link></p>
+                <p>You dont have an account? <Link to='/techsignup'>Register</Link></p>
             </div>
         </div>
       )

@@ -53,7 +53,7 @@ const firebaseConfig = {
   export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 
-  export const createUserDocumentFromAuthForTechs = async (userAuth, additionalInformation = {}) => {
+  export const createUserDocumentFromAuthForTechs = async ( userAuth, additionalInformation = {}) => {
     if(!userAuth) return;
     const userDocRef = doc(db, 'Techusers', userAuth.uid);
 
@@ -64,6 +64,7 @@ const firebaseConfig = {
 
     if(!userSnapshot.exists()) {
       const {displayName, email} = userAuth;
+      
       const createdAt = new Date();
       try{
         await setDoc(userDocRef, {

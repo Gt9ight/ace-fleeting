@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
     displayName:'',
+    TechID:'',
     email:'',
     password:'',
     confirmPassword:''
@@ -12,7 +13,7 @@ const defaultFormFields = {
 
 const TechSignupForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {displayName, email, password, confirmPassword} = formFields;
+    const {displayName, TechID, email, password, confirmPassword} = formFields;
     const navigate = useNavigate()
 
     console.log(formFields)
@@ -31,7 +32,7 @@ const TechSignupForm = () => {
         try {
             const {user} = await createAuthUserWithEmailAndPassword(email, password);
 
-            await createUserDocumentFromAuthForTechs(user, {displayName});
+            await createUserDocumentFromAuthForTechs(user, {displayName, TechID});
             resetFormFields();
             navigate('/fleetlist')
 
@@ -56,6 +57,7 @@ const TechSignupForm = () => {
             <span className='title'>Tech Registration</span>
             <form onSubmit={handleSubmit}>
                 <input type='text' required onChange={handleChange} name="displayName" value={displayName} placeholder='display name'/>
+                <input type='number' required onChange={handleChange} name="TechID" value={TechID} placeholder='Tech Number'/>
                 <input type='email' required onChange={handleChange} name="email" value={email} placeholder='email'/>
                 <input type='password' required onChange={handleChange} name="password" value={password} placeholder='password'/>
                 <input  type='password' required onChange={handleChange} name="confirmPassword" value={confirmPassword} placeholder="Confirm Password"/>

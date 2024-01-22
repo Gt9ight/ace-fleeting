@@ -28,21 +28,6 @@ const Customerprogress = () => {
   }, []);
 
   
-  const handleDone = async (UnitId, isDone) => {
-    try {
-      const todoRef = doc(db, 'fleets', UnitId);
-      await updateDoc(todoRef, {
-        done: isDone,
-      });
-      
-      const updatedTask = FleetsFromFirestore.map((unit) =>
-        unit.id === UnitId ? { ...unit, done: isDone } : unit
-      );
-      setFleetsFromFirestore(updatedTask);
-    } catch (error) {
-      console.error('Error marking todo as done: ', error);
-    }
-  };
 
   
   const ByCustomer = {};

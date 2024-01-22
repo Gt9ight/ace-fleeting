@@ -5,11 +5,20 @@ h1 {
     text-align: center;
     font-size: 2rem;
   }
+
+  .customer {
+    text-align: center;
+  }
+
+  .customer-creation {
+    text-align: center;
+  }
   
  
   .customers {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 20px;
   }
   
@@ -79,6 +88,51 @@ h1 {
     transition: transform 0.3s ease;
     max-width: 400px; 
     width: 100%;
+  }
+
+  .unit-card.priority-low {
+    border-left: 7px solid #4c8ed4; /* Increase the border size */
+  }
+  
+  .unit-card.priority-medium {
+    border-left: 7px solid #FFC107; /* Increase the border size */
+  }
+  
+  .unit-card.priority-high {
+    border-left: 7px solid #F44336; /* Increase the border size */
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .customers {
+      display: flex;
+      flex-wrap: wrap; /* Display customers in a column */
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .unit-card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      max-width: 400px; 
+      width: 80%;
+    }
+
+    .unit-card.priority-low {
+      border-left: 5px solid #4c8ed4; /* Adjust the border size for mobile view */
+    }
+  
+    .unit-card.priority-medium {
+      border-left: 5px solid #FFC107;
+    }
+  
+    .unit-card.priority-high {
+      border-left: 5px solid #F44336;
+    }
   }
   
   .unit-card ul {

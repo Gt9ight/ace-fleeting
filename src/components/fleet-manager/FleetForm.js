@@ -13,6 +13,7 @@ import { AuthContext } from '../context/AuthContext';
     const [inputValue, setInputValue] = useState('');
     const [selectedCustomer, setSelectedCustomer] = useState('');
     const [newCustomer, setNewCustomer] = useState('');
+    const [priority, setPriority] = useState('low')
     const [customers, setCustomers] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [currentUnitIndex, setCurrentUnitIndex] = useState(null);
@@ -26,7 +27,11 @@ import { AuthContext } from '../context/AuthContext';
 
   const handleAddingUnitNumber = () => {
     if (inputValue.trim() !== '') {
-      setCustomerFleet([...customerFleet, { UnitNumber: inputValue, customer: selectedCustomer, TaskSpecifics: [] }]);
+      const newUnit = { UnitNumber: inputValue, customer: selectedCustomer, TaskSpecifics: [], priority };
+      setCustomerFleet([...customerFleet, newUnit].sort((a, b) => {
+        const priorityOrder = { low: 3, medium: 2, high: 1 };
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+      }));
       setInputValue('');
     }
   };
@@ -90,6 +95,8 @@ import { AuthContext } from '../context/AuthContext';
           {customerName}
         </button>
       ))}
+      </div>
+      <div className='customer-creation'>
         <input
           type="text"
           value={newCustomer}
@@ -107,6 +114,11 @@ import { AuthContext } from '../context/AuthContext';
         placeholder="Enter a Unit Number"
         className='unit-input'
       />
+      <select onChange={(e) => setPriority(e.target.value)} value={priority}>
+          <option value="low">Low Priority</option>
+          <option value="medium">Medium Priority</option>
+          <option value="high">High Priority</option>
+      </select>
       <button onClick={handleAddingUnitNumber} className='add-button'>Add</button>
 
       </div>
@@ -115,7 +127,7 @@ import { AuthContext } from '../context/AuthContext';
         {customerFleet.map((unit, index) => {
           if (selectedCustomer === 'All' || unit.customer === selectedCustomer) {
             return (
-              <li key={index} className='unit-card'>
+              <li key={index} className={`unit-card priority-${unit.priority}`}>
                 <strong>Unit Number:</strong>{unit.UnitNumber}
                 <button
                   onClick={() => {

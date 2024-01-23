@@ -87,10 +87,14 @@ const Customerprogress = () => {
               <p>{getCustomerProgress(Fleetcustomer).toFixed(2)}% Complete</p>
             </div>
             {showCustomerCategory === Fleetcustomer && (
-              <ul className="fleet-list">
-                {ByCustomer[Fleetcustomer].map((unit) => (
-                  <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''}`}>
-                    <strong>Unit Number:</strong> {unit.UnitNumber}
+      <ul className="fleet-list">
+      {ByCustomer[Fleetcustomer]
+        .sort((unitA, unitB) => {
+         const priorityOrder = { low: 3, medium: 2, high: 1 };
+        return priorityOrder[unitA.priority] - priorityOrder[unitB.priority];
+     }).map((unit) => (
+                  <li key={unit.id} className={`unit-card priority-${unit.priority}`}>                   
+                    <strong>Unit Number:</strong> {unit.UnitNumber} Priority:{unit.priority}
                     <ul>
                       {unit.TaskSpecifics &&
                         unit.TaskSpecifics.length > 0 &&

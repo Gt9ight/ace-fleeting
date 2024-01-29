@@ -34,9 +34,9 @@ const TechSignInForm = () => {
 
     try {
         const response = await signInAuthUserWithEmailAndPassword(email, password)
-        navigate('/fleetlist')
         console.log(response)
     resetFormFields();
+    navigate('/fleetlist')
     }catch(error) {
     switch(error.code){
         case 'auth/wrong-passwoird':

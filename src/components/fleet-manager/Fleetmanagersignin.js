@@ -24,21 +24,22 @@ const FleetmanagerSignInForm = () => {
     const signInWithGoogle = async() => {
         const {user} = await signInWithGooglePopup();
         await createUserDocumentFromAuthForFleetManagers(user)
-        navigate('/fleetform')
+        navigate('/fleetform');
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/fleetform')
+        
 
 
     try {
         const response = await signInAuthUserWithEmailAndPassword(email, password)
         console.log(response)
     resetFormFields();
+    navigate('/fleetform')
     }catch(error) {
     switch(error.code){
-        case 'auth/wrong-passwoird':
+        case 'auth/wrong-password':
             alert('incorrect password for email')
             break
             case'auth/user-not-found':

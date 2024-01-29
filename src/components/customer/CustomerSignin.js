@@ -30,16 +30,15 @@ const CustomerSignInForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/customer')
-
 
     try {
         const response = await signInAuthUserWithEmailAndPassword(email, password)
         console.log(response)
     resetFormFields();
+    navigate('/customer')
     }catch(error) {
     switch(error.code){
-        case 'auth/wrong-passwoird':
+        case 'auth/wrong-password':
             alert('incorrect password for email')
             break
             case'auth/user-not-found':

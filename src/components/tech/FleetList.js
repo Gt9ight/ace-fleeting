@@ -105,8 +105,12 @@ const FleetList = () => {
             </div>
             {showCustomerCategory === Fleetcustomer && (
               <ul className="fleet-list">
-                {ByCustomer[Fleetcustomer].map((unit) => (
-                  <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''}`}>
+                {ByCustomer[Fleetcustomer]
+                  .sort((unitA, unitB) => {
+                  const priorityOrder = { low: 3, medium: 2, high: 1 };
+                  return priorityOrder[unitA.priority] - priorityOrder[unitB.priority];
+              }).map((unit) => (
+                  <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''} ${unit.priority}`}>
                     <input
                       type="checkbox"
                       checked={unit.done || false}

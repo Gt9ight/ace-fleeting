@@ -101,6 +101,7 @@ h1 {
   .unit-card.priority-high {
     border-left: 7px solid #F44336; /* Increase the border size */
   }
+  
 
   @media screen and (max-width: 768px) {
 

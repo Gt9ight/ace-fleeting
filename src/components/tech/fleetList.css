@@ -76,8 +76,30 @@ body{
   .unit-item {
     margin-bottom: 15px;
     padding: 10px;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff; /* Set background color to white */
+  }
+  .unit-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .unit-item.low {
+    border-left: 5px solid #3498db; /* Blue border for low priority */
+  }
+  
+  .unit-item.medium {
+    border-left: 5px solid #e67e22; /* Orange border for medium priority */
+  }
+  
+  .unit-item.high {
+    border-left: 5px solid #e74c3c; /* Red border for high priority */
   }
   
   .todo-item.done {
@@ -118,6 +140,7 @@ body{
   .category-card:hover {
     transform: scale(1.02);
   }
+  
   
   .category-header {
     padding: 15px;
@@ -174,4 +197,15 @@ body{
     margin-top: 10px; /* Adjust spacing between elements */
     width: 100%; /* Make the button full width */
   }
+}
+
+
+.unit-item.done {
+  background-color: #2ecc71; /* Set background color to green for done units */
+  color: white; /* Set text color to white for better visibility */
+}
+
+.unit-item.done:hover {
+  transform: scale(1); /* Remove hover effect for done units */
+  box-shadow: none; /* Remove box-shadow for done units */
 }

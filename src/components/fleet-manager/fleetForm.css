@@ -90,16 +90,21 @@ h1 {
     width: 100%;
   }
 
+  .unit-card.done {
+    background-color: #4CAF50;
+  }
+  
+
   .unit-card.priority-low {
-    border-left: 7px solid #4c8ed4; /* Increase the border size */
+    border-left: 7px solid #4c8ed4; 
   }
   
   .unit-card.priority-medium {
-    border-left: 7px solid #FFC107; /* Increase the border size */
+    border-left: 7px solid #FFC107;
   }
   
   .unit-card.priority-high {
-    border-left: 7px solid #F44336; /* Increase the border size */
+    border-left: 7px solid #F44336;
   }
   
 
@@ -107,7 +112,7 @@ h1 {
 
     .customers {
       display: flex;
-      flex-wrap: wrap; /* Display customers in a column */
+      flex-wrap: wrap;
       align-items: center;
       margin-bottom: 20px;
     }
@@ -124,7 +129,7 @@ h1 {
     }
 
     .unit-card.priority-low {
-      border-left: 5px solid #4c8ed4; /* Adjust the border size for mobile view */
+      border-left: 5px solid #4c8ed4;
     }
   
     .unit-card.priority-medium {

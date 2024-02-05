@@ -26,9 +26,6 @@ const Customerprogress = () => {
 
     fetchData();
   }, []);
-
-  
-
   
   const ByCustomer = {};
   FleetsFromFirestore.forEach((unit) => {
@@ -93,8 +90,8 @@ const Customerprogress = () => {
          const priorityOrder = { low: 3, medium: 2, high: 1 };
         return priorityOrder[unitA.priority] - priorityOrder[unitB.priority];
      }).map((unit) => (
-                  <li key={unit.id} className={`unit-card priority-${unit.priority}`}>                   
-                    <strong>Unit Number:</strong> {unit.UnitNumber} Priority:{unit.priority}
+      <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''} ${unit.priority}`}>                   
+                    <strong>Unit Number:</strong> {unit.UnitNumber} <strong>Priority:</strong>{unit.priority}
                     <ul>
                       {unit.TaskSpecifics &&
                         unit.TaskSpecifics.length > 0 &&

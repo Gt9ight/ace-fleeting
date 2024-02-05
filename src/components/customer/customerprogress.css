@@ -158,12 +158,12 @@
   transition: transform 0.3s ease;
   max-width: 400px;
   width: 100%;
-  background-color: #fff; /* Set background color to white */
+  background-color: #fff;
 }
 
 .unit-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow on hover for depth */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .unit-header {
@@ -172,22 +172,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f0f0f0; /* Header background color */
+  background-color: #f0f0f0;
 }
 
 .unit-info {
   padding: 15px;
-  background-color: #f9f9f9; /* Unit info background color */
+  background-color: #f9f9f9;
 }
 
 .priority-low {
-  border-left: 5px solid #3498db; /* Set border color for low priority */
+  border-left: 5px solid #3498db;
 }
 
 .priority-medium {
-  border-left: 5px solid #f39c12; /* Set border color for medium priority */
+  border-left: 5px solid #f39c12;
 }
 
 .priority-high {
-  border-left: 5px solid #e74c3c; /* Set border color for high priority */
+  border-left: 5px solid #e74c3c;
 }

@@ -106,16 +106,13 @@ import { AuthContext } from '../context/AuthContext';
     setShowPopup(false);
   };
 
-  const handleCustomerChange = (customer) => {
-    setSelectedCustomer(customer);
-  };
-
   const handleNewCustomerChange = (e) => {
     setNewCustomer(e.target.value);
   };
 
   const handleCreateNewCustomer = () => {
     if (newCustomer.trim() !== '') {
+      setSelectedCustomer(newCustomer); // Set the selected customer directly
       setCustomers([...customers, newCustomer]);
       setNewCustomer('');
     }
@@ -125,6 +122,7 @@ import { AuthContext } from '../context/AuthContext';
     if (customerFleet.length > 0) {
       createFleetDatabase('fleets', customerFleet);
        setCustomerFleet([]);
+       setSelectedCustomer('')
     }
   };
 
@@ -136,17 +134,6 @@ import { AuthContext } from '../context/AuthContext';
       </div>
       <h1>Ace Fleeting</h1>
       
-      <div className="customers">
-      {customers.map((customerName) => (
-        <button
-          key={customerName}
-          onClick={() => handleCustomerChange(customerName)}
-          className={selectedCustomer === customerName ? 'active' : ''}
-        >
-          {customerName}
-        </button>
-      ))}
-      </div>
       <div className='customer-creation'>
         <input
           type="text"
@@ -251,7 +238,7 @@ import { AuthContext } from '../context/AuthContext';
                         unit.TaskSpecifics.map((info, index) => (
                           <li key={index}>
                             <strong>Position:</strong> {info.position}, <strong>Specifics:</strong>{' '}
-                            {info.specifics}, <strong>Tread Depth:</strong> {info.treadDepth}
+                            {info.specifics}, <strong>Tread Depth:</strong> {info.treadDepth}/32
                           </li>
                         ))}
                     </ul>

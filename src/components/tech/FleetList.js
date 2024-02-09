@@ -124,7 +124,7 @@ const FleetList = () => {
                         unit.TaskSpecifics.map((info, index) => (
                           <li key={index}>
                             <strong>Position:</strong> {info.position}, <strong>Specifics:</strong>{' '}
-                            {info.specifics}, <strong>Tread Depth:</strong> {info.treadDepth}
+                            {info.specifics}, <strong>Tread Depth:</strong> {info.treadDepth}/32
                           </li>
                         ))}
                     </ul>

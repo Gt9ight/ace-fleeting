@@ -202,7 +202,6 @@ body{
 
 .unit-item.done {
   background-color: #2ecc71; /* Set background color to green for done units */
-  color: white; /* Set text color to white for better visibility */
 }
 
 .unit-item.done:hover {

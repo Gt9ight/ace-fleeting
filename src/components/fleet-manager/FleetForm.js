@@ -141,7 +141,7 @@ import { AuthContext } from '../context/AuthContext';
           onChange={handleNewCustomerChange}
           placeholder="Enter Customer Name"
         />
-        <button onClick={handleCreateNewCustomer}>Create</button>
+        <button onClick={handleCreateNewCustomer}>Start</button>
       </div>
       <h2 className='customer'>Customer: {selectedCustomer}</h2>
       <div className='input-section'>

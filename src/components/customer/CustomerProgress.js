@@ -92,6 +92,7 @@ const Customerprogress = () => {
      }).map((unit) => (
       <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''} ${unit.priority}`}>                   
                     <strong>Unit Number:</strong> {unit.UnitNumber} <strong>Priority:</strong>{unit.priority}
+
                     <ul>
                       {unit.TaskSpecifics &&
                         unit.TaskSpecifics.length > 0 &&
@@ -102,6 +103,10 @@ const Customerprogress = () => {
                           </li>
                         ))}
                     </ul>
+                    {unit.imageUrls &&
+                        unit.imageUrls.map((imageUrl, index) => (
+                          <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className='unit-image' />
+                        ))}
                   </li>
                 ))}
               </ul>

@@ -134,8 +134,8 @@ h1 {
     }
   
     .category-cards {
-      width: 85%; /* Adjust this value as needed */
-      margin: 0 auto; /* Center the cards horizontally */
+      width: 85%;
+      margin: 0 auto;
     }
   
     .unit-card.priority-low {

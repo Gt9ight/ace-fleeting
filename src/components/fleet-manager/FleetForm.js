@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 
 
 
+
   const FleetForm = () => {
     const [customerFleet, setCustomerFleet] = useState([]);
     const [inputValue, setInputValue] = useState('');
@@ -112,7 +113,7 @@ import { AuthContext } from '../context/AuthContext';
 
   const handleCreateNewCustomer = () => {
     if (newCustomer.trim() !== '') {
-      setSelectedCustomer(newCustomer); // Set the selected customer directly
+      setSelectedCustomer(newCustomer); 
       setCustomers([...customers, newCustomer]);
       setNewCustomer('');
     }
@@ -132,7 +133,7 @@ import { AuthContext } from '../context/AuthContext';
         <p className='username'>Welcome, {currentUser.displayName}</p>        
         <button onClick={()=>signOut(auth)} className='logout'>Log Out</button>
       </div>
-      <h1>Ace Fleeting</h1>
+      <h1 className='title'>Ace Fleeting</h1>
       
       <div className='customer-creation'>
         <input
@@ -242,6 +243,10 @@ import { AuthContext } from '../context/AuthContext';
                           </li>
                         ))}
                     </ul>
+                    {unit.imageUrls &&
+                        unit.imageUrls.map((imageUrl, index) => (
+                          <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className='unit-image' />
+                        ))}
                   </li>
                 ))}
               </ul>

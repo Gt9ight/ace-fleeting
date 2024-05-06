@@ -133,7 +133,6 @@
         overflow: hidden;
       }
       
-      /* Progress bar fill */
       .progress-bar-fill {
         height: 100%;
         background-color: #00b894;
@@ -180,4 +179,11 @@
 
 .priority-high {
   border-left: 5px solid #e74c3c;
+}
+
+.unit-image {
+  max-width: 80%;
+  margin: 10px;
+  max-height: 100px;
+  object-fit: cover;
 }

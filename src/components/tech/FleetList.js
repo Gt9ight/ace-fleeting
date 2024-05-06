@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { db, auth } from '../../utilis/Firebase';
+import { db, auth, storage } from '../../utilis/Firebase';
 import { getDocs, collection, updateDoc, doc } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
 import { AuthContext } from '../context/AuthContext';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './fleetList.css'
 const FleetList = () => {
   const [FleetsFromFirestore, setFleetsFromFirestore] = useState([]);
@@ -31,10 +32,15 @@ const FleetList = () => {
   
   const handleDone = async (UnitId, isDone) => {
     try {
-      const todoRef = doc(db, 'fleets', UnitId);
-      await updateDoc(todoRef, {
-        done: isDone,
-      });
+
+        const todoRef = doc(db, 'fleets', UnitId);
+        await updateDoc(todoRef, {
+          done: isDone,
+
+        });
+      
+
+
      
       const updatedTask = FleetsFromFirestore.map((unit) =>
         unit.id === UnitId ? { ...unit, done: isDone } : unit
@@ -42,6 +48,37 @@ const FleetList = () => {
       setFleetsFromFirestore(updatedTask);
     } catch (error) {
       console.error('Error marking todo as done: ', error);
+    }
+  };
+
+  const uploadImages = async (UnitId, files) => {
+    try {
+
+ 
+      const imageUrls = await Promise.all(
+        files.map(async (file) => {
+          const storageRef = ref(storage, `${UnitId}/${file.name}`);
+          await uploadBytes(storageRef, file);
+          return getDownloadURL(storageRef);
+        })
+      );
+
+ 
+      const fleetRef = doc(db, 'fleets', UnitId);
+      await updateDoc(fleetRef, {
+        imageUrls: imageUrls,
+      });
+
+
+      setFleetsFromFirestore(prevState => {
+        return prevState.map(unit =>
+          unit.id === UnitId ? { ...unit, imageUrls: imageUrls } : unit
+        );
+      });
+
+      console.log('Image uploaded successfully');
+    } catch (error) {
+      console.error('Error uploading image: ', error);
     }
   };
 
@@ -111,11 +148,6 @@ const FleetList = () => {
                   return priorityOrder[unitA.priority] - priorityOrder[unitB.priority];
               }).map((unit) => (
                   <li key={unit.id} className={`unit-item ${unit.done ? 'done' : ''} ${unit.priority}`}>
-                    <input
-                      type="checkbox"
-                      checked={unit.done || false}
-                      onChange={(e) => handleDone(unit.id, e.target.checked)}
-                    />
                     <strong>Unit Number:</strong> {unit.UnitNumber}
                    
                     <ul>
@@ -128,6 +160,43 @@ const FleetList = () => {
                           </li>
                         ))}
                     </ul>
+                    <button
+                      className={`unit-button ${unit.done ? 'completed' : ''}`}
+                      onClick={() => handleDone(unit.id, !unit.done)}
+                    >
+                          {unit.done ? 'Completed' : 'Mark Done'}
+                    </button>
+                    <button
+                        className='unit-button'
+                        onClick={() => {
+                          const fileInput = document.createElement('input');
+                          fileInput.type = 'file';
+                          fileInput.multiple = true;
+                          fileInput.onchange = (e) => {
+                            const files = Array.from(e.target.files);
+                            uploadImages(unit.id, files);
+                          };
+                          fileInput.click();
+                        }}
+                      >
+                        Upload Image
+                      </button>
+                      <button
+                        className='unit-button'
+                        onClick={() => {
+                          const fileInput = document.createElement('input');
+                          fileInput.type = 'file';
+                          fileInput.accept = 'image/*';
+                          fileInput.capture = 'camera'; 
+                          fileInput.onchange = (e) => {
+                            const file = e.target.files[0];
+                            uploadImages(unit.id, file);
+                          };
+                          fileInput.click();
+                        }}
+                      >
+                        Take Picture
+                      </button>
                   </li>
                 ))}
               </ul>

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ace-fleeting/static/css/main.ea3459c2.css",
+    "main.js": "/ace-fleeting/static/js/main.8290c548.js",
+    "static/js/787.491ca4f2.chunk.js": "/ace-fleeting/static/js/787.491ca4f2.chunk.js",
+    "index.html": "/ace-fleeting/index.html",
+    "main.ea3459c2.css.map": "/ace-fleeting/static/css/main.ea3459c2.css.map",
+    "main.8290c548.js.map": "/ace-fleeting/static/js/main.8290c548.js.map",
+    "787.491ca4f2.chunk.js.map": "/ace-fleeting/static/js/787.491ca4f2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea3459c2.css",
+    "static/js/main.8290c548.js"
+  ]
+}
